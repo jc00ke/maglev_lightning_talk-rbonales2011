@@ -15,6 +15,7 @@ This will pull down both MagLev & the Gemstone VM
 * [indexing](https://github.com/MagLev/maglev/tree/master/examples/persistence/indexing)
 
 ## Debug
+* MAGLEV\_OPTS="-d -q"
 * nil.pause & fr 5
 * fr (move to a frame)
 * copy the object id, inspect @object\_id

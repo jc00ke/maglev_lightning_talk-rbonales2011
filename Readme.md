@@ -65,3 +65,26 @@ This will pull down both MagLev & the Gemstone VM
       virtualLoadable    174309377  format=16r806820 primaryCopy 160595713 pns=nil tns=176412929
         Object           72193  format=16r2000 pns=127536897 tns=176413185
           Models         154830849  format=16r802020 pns=nil tns=176406529
+
+## Persist it
+    Maglev.persistable do
+      require "my_models"
+    end
+Now we can truly persist
+
+    class Pet
+      include Tesla::Model
+
+      attr_accessor :name
+    end
+
+    my_cat = Pet.new
+    my_cat.name = "Pierre"
+    my_cat.save # Not actually persisted to the repository
+    Maglev.commit_transaction
+    # now it's up there & available to the other VMs
+
+### Notes on Persistence
+* You need to persist all the things your lib depends on
+* You need to abort & commit transactions (Rack & the status code)
+* You need to go check it out, it's pretty cool. It's pretty cool.

@@ -78,6 +78,7 @@ Now we can truly persist
       attr_accessor :name
     end
 
+    Maglev.abort_transaction
     my_cat = Pet.new
     my_cat.name = "Pierre"
     my_cat.save # Not actually persisted to the repository
